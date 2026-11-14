@@ -1,5 +1,4 @@
-
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const usuarioSchema = new mongoose.Schema({
     nombre: {
@@ -7,7 +6,6 @@ const usuarioSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-
     correo: {
         type: String,
         required: true,
@@ -15,27 +13,25 @@ const usuarioSchema = new mongoose.Schema({
         lowercase: true,
         trim: true
     },
-
     contrasenaHash: {
         type: String,
         required: true
     },
-
     rol: {
         type: String,
         enum: ["ciudadano", "funcionario", "administrador"],
         required: true
     },
-
     activo: {
         type: Boolean,
         default: true
     },
-
     fechaRegistro: {
         type: Date,
         default: Date.now
     }
 });
 
-module.exports = mongoose.model("Usuario", usuarioSchema);
+const Usuario = mongoose.model("Usuario", usuarioSchema);
+
+export default Usuario;

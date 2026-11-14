@@ -4,7 +4,7 @@
 
 Denuncia Garzón es un proyecto que estamos desarrollando como aprendices del SENA. La idea es crear un sistema que permita a los ciudadanos registrar denuncias y consultar su estado.
 
-En esta parte del proyecto estamos trabajando en la base de datos y el backend, para que la información se pueda guardar y consultar correctamente.
+En esta parte del proyecto estamos trabajando en el backend y en la base de datos MongoDB, para guardar y consultar la información.
 
 ## Herramientas que estamos utilizando
 
@@ -12,57 +12,62 @@ En esta parte del proyecto estamos trabajando en la base de datos y el backend, 
 - Node.js
 - Express
 - MongoDB
+- Mongoose
 - MongoDB Compass
 - Visual Studio Code
 
 ## ¿Qué necesitamos para ejecutar el proyecto?
 
-Antes de iniciar debemos tener instalado:
-
-- Node.js
-- MongoDB Community Server
-- Visual Studio Code
+- Node.js y npm.
+- MongoDB Community Server en ejecución.
+- Visual Studio Code.
 
 ## ¿Cómo instalar el proyecto?
 
-1. Descargar o clonar el proyecto.
+1. Descargar o clonar el repositorio.
 2. Abrir la carpeta `backend` en Visual Studio Code.
-3. Abrir la terminal.
-4. Ejecutar el siguiente comando:
+3. Abrir la terminal y ejecutar:
 
 ```bash
 npm install
 ```
 
-5. Crear un archivo llamado `.env` y configurarlo tomando como ejemplo el archivo `.env.example`.
+4. Crear un archivo llamado `.env` tomando como ejemplo `.env.example`.
+5. Revisar que `MONGO_URI` tenga la dirección de la base de datos MongoDB que se va a utilizar.
 
 ## ¿Cómo iniciar el backend?
 
-En la terminal de Visual Studio Code ejecutamos:
+En la terminal ejecutar:
 
 ```bash
 npm start
 ```
 
-Si todo está funcionando, el servidor estará disponible en:
+El backend estará disponible en `http://localhost:3000`.
 
-http://localhost:3000
+Para iniciar en modo de desarrollo:
+
+```bash
+npm run dev
+```
 
 ## ¿Cómo comprobar que funciona?
 
-Abrimos esta dirección en el navegador:
+Abrir en el navegador:
 
-http://localhost:3000/api/health
+`http://localhost:3000/api/health`
 
-Si aparece un mensaje indicando que el servidor está activo y la base de datos está conectada, significa que todo está funcionando correctamente.
+Si todo está funcionando, la respuesta tendrá el estado `healthy` y mostrará que MongoDB está conectado.
 
 ## Carpetas y archivos del proyecto
 
-- `config`: contiene la conexión con MongoDB.
-- `controllers`: contiene las funciones que realizan las operaciones.
-- `models`: contiene la estructura de los datos de los usuarios.
-- `routes`: contiene las rutas para acceder a las funciones.
-- `server.js`: es el archivo desde donde iniciamos el servidor.
+- `src/app.js`: configura Express y registra las rutas.
+- `src/server.js`: conecta MongoDB e inicia el servidor. También permite cerrarlo de forma ordenada.
+- `src/config`: contiene la configuración y conexión con MongoDB.
+- `src/controllers`: contiene las funciones que atienden las solicitudes.
+- `src/routes`: contiene las rutas del backend.
+- `src/models`: contiene la estructura de los datos de MongoDB.
+- `src/middlewares`: contiene funciones que se ejecutan durante las solicitudes, como el manejo de errores.
 - `.env.example`: sirve como ejemplo para configurar las variables del proyecto.
 - `.gitignore`: indica qué archivos no debemos subir a GitHub.
 
